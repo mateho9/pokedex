@@ -43,6 +43,8 @@ body  {
 }
 
 .pressme:hover {
-    cursor: not-allowed; /*added for fun, cursor properties*/
+    cursor: url('/project-cf-pokedex/img/Pokeball.cur'), auto; /*changed to pointer, cursor properties*/
     opacity: 0.6;
 }
+
+
