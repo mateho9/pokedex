@@ -27,36 +27,45 @@ let pokemonRepository = (function () {
             type: ['rock', 'ground']
         },
     ];
+    //function to add pokemon to the list
     function add(pokemon) {
         pokemonList.push(pokemon);
     }
-
+    //funtion to return the pokemon list
     function getAll() {
         return pokemonList;
     }
+    //found this solution online but dont quite understand it
+    function showDetails(pokemon) {
+        console.log(pokemon.name)
+    }
+
+    //added spacing so its easier to read for now
+    function addListItem(pokemon) {
+        let list = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerHTML = pokemon.name;
+        button.classList.add('pressme');
+        
+        //Need to come up with a diff variable name?
+        listItem.appendChild(button);
+        list.appendChild(listItem)
+        
+        //adding eventhandler to show the pokemon logged on each press
+        button.addEventListener('click', function (event) {
+            showDetails(pokemon);
+            console.log(event);
+        });
+    }   
 
     return {
         getAll: getAll,
         add: add,
+        addListItem: addListItem,
     };
 })();
 
-pokemonRepository.getAll().forEach(function(pokemon) {
-    //added these into console just to see them work. 
-    console.log(pokemon.name + ' is ' + pokemon.height + 'M tall and ' + pokemon.type + ' type.');
-    if(pokemon.height>5) {
-        console.log('Wow, thats one big Pokemon!');
-    } 
-    if(pokemon.height<0.5) {
-        console.log('Look how small this Pokemon is')
-    }
-
-    document.write(pokemon.name + ' is ' + pokemon.height + 'M tall and ' + pokemon.type + ' type'); 
-    if(pokemon.height>5) {
-        document.write('Wow, thats one big Pokemon!');
-    } 
-    if(pokemon.height<0.5) {
-        document.write('Look how small this Pokemon is.')
-    }
-    document.write('<br>');
+pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
 });

@@ -1,0 +1,48 @@
+:root  {
+    --primary-color: #99b2df;
+    --button-background:#ff0000;
+    --button-font-color: #000000;
+    --button-font: 'Mochiy Pop P One', sans-serif; /*japanese based font*/
+}
+
+*  {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body  {
+    background: var(--primary-color);
+}
+
+.pokemon-list li  {
+/*want to change this, something more dynamic*/
+    margin: 25px, 50px, 75px;
+    list-style: none;
+    align-items: center;
+}
+
+.pressme  {
+    /*want to make nice neat rows*/
+    font-family: var(--button-font);
+    font-size: 1.875em; /*14px/16=0.875em, got this from the internet*/
+    margin: 10px;
+    padding: 25px 50px;
+    background-color: var(--button-background);
+    text-align: center;
+    text-decoration: none; /*might want to add some*/
+    color: var(--button-font-color);
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    border: 2px black;
+    width: 200px;
+    transition: 0.3s ease-out;
+}
+
+.pressme:hover {
+    cursor: not-allowed; /*added for fun, cursor properties*/
+    opacity: 0.6;
+}
