@@ -1,7 +1,7 @@
 :root  {
     --primary-color: #99b2df;
-    --button-background:#ff0000;
-    --button-font-color: #000000;
+    --button-background:red;
+    --button-font-color: black;
     --button-font: 'Mochiy Pop P One', sans-serif; /*japanese based font*/
 }
 
@@ -29,16 +29,18 @@ body  {
     margin: 10px;
     padding: 25px 50px;
     background-color: var(--button-background);
+    /*added text shadow just for practice, take out in final app*/
+    text-shadow: 1.5px 1.5px white;
     text-align: center;
-    text-decoration: none; /*might want to add some*/
+    text-decoration-color: none; /*might want to add some*/
     color: var(--button-font-color);
     border-radius: 5px;
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 100px;
-    border: 2px black;
-    width: 200px;
+    height: 150px;
+    border: 2px red;
+    width: 250px;
     transition: 0.3s ease-out;
 }
 
