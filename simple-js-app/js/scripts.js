@@ -1,32 +1,7 @@
 let pokemonRepository = (function () {
     //pokemon array
-    let pokemonList = [
-        {
-            name: 'Bulbasaur',
-            height: 0.7,
-            type: ['grass', 'poison']
-        },
-        {
-            name: 'Nidoran', 
-            height: 0.4, 
-            type: ['poison']
-        },
-        {
-            name: 'Magikarp', 
-            height: 1, 
-            type: ['water']
-        },
-        {
-            name: 'Evee', 
-            height: 0.3, 
-            type: ['normal']
-        },
-        {
-            name: 'Onix',
-            height: 8.8,
-            type: ['rock', 'ground']
-        },
-    ];
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     //function to add pokemon to the list
     function add(pokemon) {
         pokemonList.push(pokemon);
@@ -35,9 +10,12 @@ let pokemonRepository = (function () {
     function getAll() {
         return pokemonList;
     }
-    //found this solution online but dont quite understand it
+    //used to execute loadDetails inside the console
     function showDetails(pokemon) {
-        console.log(pokemon.name)
+        console.log(pokemon.name);
+        loadDetails(pokemon).then(function () {
+            console.log(pokemon);
+        });
     }
 
     //added spacing so its easier to read for now
@@ -47,11 +25,9 @@ let pokemonRepository = (function () {
         let button = document.createElement('button');
         button.innerHTML = pokemon.name;
         button.classList.add('pressme');
-        
         //Need to come up with a diff variable name?
         listItem.appendChild(button);
         list.appendChild(listItem)
-        
         //adding eventhandler to show the pokemon logged on each press
         button.addEventListener('click', function (event) {
             showDetails(pokemon);
@@ -59,13 +35,48 @@ let pokemonRepository = (function () {
         });
     }   
 
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          json.results.forEach(function (item) {
+            let pokemon = {
+              name: item.name,
+              detailsUrl: item.url
+            };
+            add(pokemon);
+          });
+        }).catch(function (e) {
+          console.error(e);
+        })
+      }
+
+      function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+          return response.json();
+        }).then(function (details) {
+          // Now we add the details to the item
+          item.imageUrl = details.sprites.front_default;
+          item.height = details.height;
+          item.types = details.types;
+        }).catch(function (e) {
+          console.error(e);
+        });
+      }
+
     return {
         getAll: getAll,
         add: add,
         addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
     };
 })();
 
-pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function() {
+    // Now the data is loaded!
+    pokemonRepository.getAll().forEach(function(pokemon){
+      pokemonRepository.addListItem(pokemon);
+    });
 });
