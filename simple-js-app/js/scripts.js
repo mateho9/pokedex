@@ -14,7 +14,7 @@ let pokemonRepository = (function () {
     //used to execute loadDetails inside the console
     function showDetails(pokemon) {
         loadDetails(pokemon).then(function (updatedPokemon) {
-            showModal(pokemon.name, 'Height: ' + pokemon.height. pokemon.imageUrl);
+            showModal(updatedPokemon.name, 'Height: ' + updatedPokemon.height, updatedPokemon.imageUrl);
         });
     }
 
