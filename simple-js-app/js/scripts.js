@@ -13,7 +13,7 @@ let pokemonRepository = (function () {
     }
     //used to execute loadDetails inside the console
     function showDetails(pokemon) {
-        loadDetails(pokemon).then(function () {
+        loadDetails(pokemon).then(function (updatedPokemon) {
             showModal(pokemon.name, 'Height: ' + pokemon.height. pokemon.imageUrl);
         });
     }
@@ -79,6 +79,14 @@ let pokemonRepository = (function () {
       }
     });
 
+    //close modal by clicking out of the window
+    modalContainer.addEventListener('keydown', (e) => {
+      let target = e.target;
+      if (target === modalContainer) {
+        hideModal();
+      }
+    })
+
 
     //added spacing so its easier to read for now
     function addListItem(pokemon) {
@@ -129,6 +137,7 @@ let pokemonRepository = (function () {
           item.imageUrl = details.sprites.front_default;
           item.height = details.height;
           item.types = details.types;
+          return item;
         }).catch(function (e) {
           console.error(e);
         });
