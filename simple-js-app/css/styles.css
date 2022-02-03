@@ -49,6 +49,18 @@ body  {
     opacity: 0.6;
 }
 
+.modal {
+    margin: auto;
+    display: inline-block;
+    background: #fff;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
 #modal-container {
     display: none;
 }
