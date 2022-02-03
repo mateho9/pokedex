@@ -48,3 +48,45 @@ body  {
     cursor: url('/project-cf-pokedex/img/Pokeball.cur'), auto; /*changed to pointer, cursor properties*/
     opacity: 0.6;
 }
+
+#modal-container {
+    display: none;
+}
+
+#modal-container.is-visible {
+    position: fixed;
+    padding: 20;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100;
+    height: 100;
+    /* want to add a pokemon logo to the background of the modal*/
+    background: rgba(0, 0, 0, 0.5);
+
+    /*to show above other content*/
+    z-index: 999;
+
+    /*allow scrolling if screen isnt high enough*/
+    overflow: auto;
+
+    /*center the modal*/
+    display: grid;
+    text-align: center;
+}
+
+ .modal {
+    margin: auto;
+ }
+
+ .modal-close {
+    float: right;
+ }
+
+ .modal h1 {
+    margin-top: 0;
+ }
+
+ .modal p {
+    margin-bottom: 0;
+ }
