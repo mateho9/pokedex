@@ -11,8 +11,73 @@
     box-sizing: border-box;
 }
 
+html {
+    box-sizing: border-box;
+}
+
 body  {
     background: var(--primary-color);
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: auto;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.page-header {
+    display: inline-block;
+  width: 100%;
+  padding: 60px;
+  background-image: url('/project-cf-pokedex/img/pokemon-sitebanner.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.page-header__background {
+    /*empty for now*/
+}
+
+.page-header__logo {
+    /*empty for now*/
+}
+
+.page-header__name {
+    align-self: center;
+    width: auto;
+    padding: 70px;
+   background-image: url('/project-cf-pokedex/img/pokedex-logo.png');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: auto;
+
+}
+
+
+@supports (display: grid){
+    .pokemon-list li {
+      display: grid;
+      grid-template-columns: (1fr);
+      grid-gap: 5px;
+      padding: 5px;
+      list-style-type: none;
+      max-width: 350px;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
 }
 
 .pokemon-list li  {
@@ -52,11 +117,11 @@ body  {
 .modal {
     margin: auto;
     display: inline-block;
-    background: #fff;
+    background-image: url(/project-cf-pokedex/img/pikachu-modal.png);
     padding: 15px;
     width: 100%;
     max-width: 700px;
-    text-align: left;
+    text-align: center;
     word-wrap: break-word;
     word-break: break-all;
   }
@@ -66,15 +131,14 @@ body  {
 }
 
 #modal-container.is-visible {
-    position: fixed;
-    padding: 20;
+    position: absolute;
+    padding: 0;
     box-sizing: border-box;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     width: 100;
     height: 100;
-    /* want to add a pokemon logo to the background of the modal*/
-    background: rgba(0, 0, 0, 0.5);
+    background-image: url();
 
     /*to show above other content*/
     z-index: 999;
@@ -85,20 +149,41 @@ body  {
     /*center the modal*/
     display: grid;
     text-align: center;
+    overflow: hidden;
 }
 
  .modal {
     margin: auto;
+    width: 300px;
+    height: 300px;
  }
 
  .modal-close {
-    float: right;
+    float: left;
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+    color: yellow;
+    text-decoration: underline;
  }
 
  .modal h1 {
-    margin-top: 0;
+    margin: 5px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
  }
 
  .modal p {
+     color: white;
     margin-bottom: 0;
+  text-align: center;
  }
+
+ .modal-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+  }
+  

@@ -62,7 +62,7 @@ let pokemonRepository = (function () {
     modalContainer.addEventListener('click', (e) => {
       let target = e.target;
       if(target === modalContainer) {
-        hideModal;
+        hideModal();
       }
     });
   }
@@ -78,15 +78,6 @@ let pokemonRepository = (function () {
         hideModal();
       }
     });
-
-    //close modal by clicking out of the window
-    modalContainer.addEventListener('keydown', (e) => {
-      let target = e.target;
-      if (target === modalContainer) {
-        hideModal();
-      }
-    })
-
 
     //added spacing so its easier to read for now
     function addListItem(pokemon) {

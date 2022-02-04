@@ -3,27 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple JS App</title>
+    <title>Pokedex</title>
+    <link rel="icon" type="image/png" href="/project-cf-pokedex/img/favicon.png" sizes="32x32">
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
     <link href="http://www.rw-designer.com/cursor-set/all-pokemon" type="text/css">
-  <header>
-    <div class='title'>
-      <h1>Pokedex</h1>
-    </div>
-  </header>
-  <main>
-    <div id="modal-container"></div>
-    <div id="image-container"></div>
-    <ul class='pokemon-list' style="
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    ">
-    <!--add lists later-->
-    </ul>
-  </main>
+    <title>Pokedex</title>
   <body>
+    <div class="flex-container">
+      <header class="page-header">
+        <img src="" class="page-header__background">
+        <img src="" class="page-header__logo">
+        <h1 class="page-header__name"></h1>
+      </header>
+      <main>
+            <div id="modal-container"></div>
+            <div id="image-container"></div>
+            <ul class='pokemon-list'>
+            <!--add lists later-->
+            </ul>
+          </main>
+    </div>
     <script src="js/scripts.js"></script>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
