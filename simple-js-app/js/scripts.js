@@ -2,6 +2,7 @@ let pokemonRepository = (function () {
     //pokemon array
     let modalContainer = document.querySelector('#modal-container');
     let pokemonList = [];
+    //change limit to 1126 later
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     //function to add pokemon to the list
     function add(pokemon) {
@@ -17,67 +18,6 @@ let pokemonRepository = (function () {
             showModal(updatedPokemon.name, 'Height: ' + updatedPokemon.height, updatedPokemon.imageUrl);
         });
     }
-
-    //function to show the modal and its details
-    function showModal(title, text, img_src) {
-      let modalCotainer = document.querySelector('#modal-container');
-
-    //clear all previous content
-    modalContainer.innerHTML = '';
-
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    //add the content
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
-
-    let modalTitle = document.createElement('h1');
-    modalTitle.innerText = title;
-
-    let modalText = document.createElement('p');
-    modalText.innerText = text;
-
-    let modalImg = document.createElement('img');
-    modalImg.classList.add('modal-img');
-    // setting `src` property to set the actual element's `src` attribute
-    // this also works on <img> elements selected by querySelector() method, 
-    // it is not specific for <img> elements created with createElement() methods
-    modalImg.src = img_src;
-
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(modalTitle);
-    modal.appendChild(modalText);
-    modal.appendChild(modalImg);
-    modalContainer.appendChild(modal);
-
-    //made modal visible
-    modalContainer.classList.add('is-visible');
-
-    //close modal with esc button
-    closeButtonElement.addEventListener('click', hideModal);
-
-    //close modal when you click outside the box
-    modalContainer.addEventListener('click', (e) => {
-      let target = e.target;
-      if(target === modalContainer) {
-        hideModal();
-      }
-    });
-  }
-
-    function hideModal() {
-      modalContainer.classList.remove('is-visible');
-    }
-
-    // close modal with esc
-    window.addEventListener('keydown', (e) => {
-      let modalContainer = document.querySelector('#modal-container');
-      if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')){
-        hideModal();
-      }
-    });
 
     //added spacing so its easier to read for now
     function addListItem(pokemon) {
@@ -132,6 +72,33 @@ let pokemonRepository = (function () {
         }).catch(function (e) {
           console.error(e);
         });
+      }
+
+      function showModal(item) {
+        // showModal function
+        let modalTitle = $('.modal-title'); // modalTitle
+        let modalBody = $('.modal-body'); // modalBody
+        // let modalHeader = $(".modal-header"); // no header so removed
+  
+        let pokemonName = $('<h2>' + item.name + '</h2>');
+  
+        let pokemonHeight = $('<p>' + 'Height: ' + item.height + '</p>');
+  
+        let pokemonWeight = $('<p>' + 'Weight: ' + item.weight + '</p>');
+  
+        let pokemonAbilities = $('<p>' + 'Abilities: ' + item.abilities + '</p>');
+  
+        let pokemonImage = $('<img class=\'pokemon-modal-image\'>');
+        pokemonImage.attr('src', item.imageUrl); // pokemon image attribute loaded from 'item.imageUrl'
+  
+        modalTitle.empty(); // clears the modalTitle after display
+        modalBody.empty(); // clears the modalBody after display
+  
+        modalTitle.append(pokemonName); // pokemonName is displayed as the title in the modal
+        modalBody.append(pokemonImage); // pokemonImage is displayed in the body of the modal
+        modalBody.append(pokemonHeight); // pokemonHeight is displayed in the body of the modal
+        modalBody.append(pokemonWeight); // pokemonWeight is displayed in the body of the modal
+        modalBody.append(pokemonAbilities); // pokemonDetails are displayed in the body of the modal
       }
 
     return {
