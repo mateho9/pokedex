@@ -87,7 +87,7 @@ h1 {
     align-items: center;
 }
 
-.pressme  {
+button.btn-primary  {
     /*want to make nice neat rows*/
     font-family: var(--button-font);
     font-size: 1.875em; /*14px/16=0.875em, got this from the internet*/
@@ -109,7 +109,7 @@ h1 {
     transition: 0.3s ease-out;
 }
 
-.pressme:hover {
+.btn-primary:hover {
     cursor: url('/project-cf-pokedex/img/Pokeball.cur'), auto; /*changed to pointer, cursor properties*/
     opacity: 0.6;
 }

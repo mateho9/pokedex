@@ -1,9 +1,8 @@
 let pokemonRepository = (function () {
     //pokemon array
-    let modalContainer = document.querySelector('#modal-container');
     let pokemonList = [];
     //change limit to 1126 later
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1126';
     //function to add pokemon to the list
     function add(pokemon) {
         pokemonList.push(pokemon);
@@ -12,12 +11,6 @@ let pokemonRepository = (function () {
     function getAll() {
         return pokemonList;
     }
-    //used to execute loadDetails inside the console
-    function showDetails(pokemon) {
-        loadDetails(pokemon).then(function (updatedPokemon) {
-            showModal(updatedPokemon.name, 'Height: ' + updatedPokemon.height, updatedPokemon.imageUrl);
-        });
-    }
 
     //added spacing so its easier to read for now
     function addListItem(pokemon) {
@@ -25,23 +18,13 @@ let pokemonRepository = (function () {
         let listItem = document.createElement('li');
         let button = document.createElement('button');
         button.innerHTML = pokemon.name;
-        button.classList.add('pressme');
-        //Need to come up with a diff variable name?
+        button.classList.add('btn-primary');
         listItem.appendChild(button);
-        list.appendChild(listItem)
-        //adding eventhandler to show the pokemon logged on each press
-        button.addEventListener('click', function (event) {
+        list.appendChild(listItem);
+        button.addEventListener('click', function () {
             showDetails(pokemon);
-            console.log(event);
-        });
+        })
     }   
-
-    //event listener to show pokemon details when you click on the box
-    function buttonEventListener(button, pokemon){
-      button.addEventListener('click', function(){
-        showDetails(pokemon);
-      });
-    }
 
     function loadList() {
         return fetch(apiUrl).then(function (response) {
@@ -78,7 +61,6 @@ let pokemonRepository = (function () {
         // showModal function
         let modalTitle = $('.modal-title'); // modalTitle
         let modalBody = $('.modal-body'); // modalBody
-        // let modalHeader = $(".modal-header"); // no header so removed
   
         let pokemonName = $('<h2>' + item.name + '</h2>');
   
@@ -107,6 +89,7 @@ let pokemonRepository = (function () {
         addListItem: addListItem,
         loadList: loadList,
         loadDetails: loadDetails,
+       
     };
 })();
 
