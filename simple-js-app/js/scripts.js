@@ -17,12 +17,14 @@ let pokemonRepository = (function () {
         let list = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
+        button.setAttribute("data-toggle", "modal");
+        button.setAttribute("data-target", "#pokemonModal");
         button.innerHTML = pokemon.name;
         button.classList.add('btn-primary');
         listItem.appendChild(button);
         list.appendChild(listItem);
         button.addEventListener('click', function () {
-            showDetails(pokemon);
+            loadDetails(pokemon).then(pokemon => showModal(pokemon));
         })
     }   
 
