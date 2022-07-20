@@ -38,7 +38,7 @@ h1 {
     display: inline-block;
   width: 100%;
   padding: 60px;
-  background-image: url('../../img/pokemon-sitebanner.png');
+  background-image: url("/img/pokemon-sitebanner.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -56,7 +56,7 @@ h1 {
     align-self: center;
     width: auto;
     padding: 70px;
-   background-image: url('../../img/pokedex-logo.png');
+   background-image: url("/img/pokedex-logo.png");
    background-repeat: no-repeat;
    background-position: center;
    background-size: auto;
@@ -110,14 +110,14 @@ button.btn-primary  {
 }
 
 .btn-primary:hover {
-    cursor: url('../../img/Pokeball.cur'), auto; /*changed to pointer, cursor properties*/
+    cursor: url("/img/Pokeball.cur"), auto; /*changed to pointer, cursor properties*/
     opacity: 0.6;
 }
 
 .modal {
     margin: auto;
     display: inline-block;
-    background-image: url("../../img/pikachu-modal.png");
+    background-image: url("/img/pikachu-modal.png");
     padding: 15px;
     width: 100%;
     max-width: 700px;

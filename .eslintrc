@@ -6,9 +6,9 @@
     "extends": [
         "eslint:recommended",
         "some-other-config-you-use",
-    "prettier"]
-        },
+    "prettier"
+    ],
     "rules": {
-        "quotes": ["error", ]
+        "quotes": ["error", "single"]
     }
 }
